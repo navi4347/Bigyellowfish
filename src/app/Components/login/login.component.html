@@ -1,0 +1,24 @@
+<div class="Auth">
+  <div class="container">
+    <div class="form-container">
+      <h4>Login Your Account</h4>
+      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+        <div>
+          <label for="username">Username:</label>
+          <input id="username" formControlName="username" autocomplete="off" type="text" />
+        </div>
+    
+        <div>
+          <label for="password">Password:</label>
+          <input id="password" formControlName="password" autocomplete="off" type="password" />
+        </div>
+    
+        <button type="submit">Login</button>
+    
+        <div *ngIf="errorMessage" class="error">
+          {{ errorMessage }}
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

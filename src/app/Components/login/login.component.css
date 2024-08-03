@@ -1,0 +1,73 @@
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+.Auth {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-image: url('../../../assets/bg.svg');
+  background-size: cover;
+  background-position: center;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+
+.form-container {
+  background: rgba(255, 255, 255, 0.8);
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.Auth input {
+  width: 120%;
+  padding: 8px;
+  margin-bottom: 14px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+.Auth button {
+  width: 120%;
+  padding: 10px;
+  background-color: #007bff;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.Auth .error {
+  color: red;
+  margin-top: 10px;
+}
+
+@media (max-width: 600px) {
+  .Auth .form-container {
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+  }
+  .Auth input {
+    width: 100%;
+  }
+  .Auth button{
+    width: 100%;
+  }
+    
+
+  .Auth .form-container {
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+  }
+}
