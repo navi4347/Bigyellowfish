@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
-import { catchError } from 'rxjs/operators';
+import { catchError, map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -11,8 +11,15 @@ export class AuthService {
 
   constructor(private http: HttpClient) { }
 
-  login(username: string, password: string): Observable<string> {
-    return this.http.post<string>(this.apiUrl, { username, password }).pipe(
+  login(username: string, password: string): Observable<boolean> {
+    return this.http.post<{ token: string }>(this.apiUrl, { username, password }).pipe(
+      map(response => {
+        if (response.token) {
+          this.storeAuthToken(response.token);
+          return true;
+        }
+        return false;
+      }),
       catchError(error => {
         console.error('Login error:', error);
         return throwError('Login failed; please try again later.');
@@ -20,7 +27,7 @@ export class AuthService {
     );
   }
 
-  logout() {
+  logout(): void {
     if (typeof window !== 'undefined' && typeof sessionStorage !== 'undefined') {
       sessionStorage.removeItem('authToken');
     }
@@ -38,5 +45,11 @@ export class AuthService {
       return sessionStorage.getItem('authToken');
     }
     return null;
+  }
+
+  private storeAuthToken(token: string): void {
+    if (typeof window !== 'undefined' && typeof sessionStorage !== 'undefined') {
+      sessionStorage.setItem('authToken', token);
+    }
   }
 }

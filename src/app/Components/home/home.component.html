@@ -28,12 +28,13 @@
     </mat-toolbar>
     <div class="content">
       <ng-container *ngIf="selectedItem">
+        <app-table *ngIf="selectedItem === 'Dashboard'"></app-table>
         <app-barchart *ngIf="selectedItem === 'Bar Chart'"></app-barchart>
         <app-piechart *ngIf="selectedItem === 'Pie Chart'"></app-piechart>
         <app-linechart *ngIf="selectedItem === 'Line Chart'"></app-linechart>
       </ng-container>
       <ng-container *ngIf="!selectedItem">
-        <app-barchart></app-barchart>
+      <app-table></app-table>
       </ng-container>
     </div>
   </mat-sidenav-content>

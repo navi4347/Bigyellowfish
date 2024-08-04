@@ -20,6 +20,9 @@ import { MatButtonModule } from '@angular/material/button';
 import { PiechartComponent } from './Components/Charts/piechart/piechart.component';
 import { BarchartComponent } from './Components/Charts/barchart/barchart.component';
 import { LinechartComponent } from './Components/Charts/linechart/linechart.component';
+import { TableComponent } from './Components/Table/table/table.component';
+import { HttpClientModule } from '@angular/common/http';
+
 
 @NgModule({
   declarations: [
@@ -29,7 +32,8 @@ import { LinechartComponent } from './Components/Charts/linechart/linechart.comp
     NotfoundComponent,
     PiechartComponent,
     BarchartComponent,
-    LinechartComponent
+    LinechartComponent,
+    TableComponent
   ],
   imports: [
     BrowserModule,
@@ -42,7 +46,8 @@ import { LinechartComponent } from './Components/Charts/linechart/linechart.comp
     MatSidenavModule,
     MatListModule,
     MatIconModule,
-    MatButtonModule
+    MatButtonModule,
+    HttpClientModule,
   ],
   providers: [
     provideAnimationsAsync(),
