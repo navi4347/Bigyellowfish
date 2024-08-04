@@ -3,6 +3,10 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import * as Papa from 'papaparse';
 import { AuthService } from '../../../Services/Auth/auth.service';
 
+interface DataRow {
+  [key: string]: any;
+}
+
 @Component({
   selector: 'app-table',
   templateUrl: './table.component.html',
@@ -10,8 +14,13 @@ import { AuthService } from '../../../Services/Auth/auth.service';
 })
 export class TableComponent implements OnInit {
 
-  data: any[] = [];
+  data: DataRow[] = [];
   headers: string[] = [];
+  columnsToDisplay: string[] = [
+    'Row ID', 'Order ID', 'Order Date', 'Ship Date', 'Ship Mode', 
+    'Customer ID', 'Customer Name', 'Product Name', 
+    'Sales', 'Quantity', 'Discount', 'Profit'
+  ];
 
   constructor(private http: HttpClient, private authService: AuthService) { }
 
@@ -35,17 +44,25 @@ export class TableComponent implements OnInit {
           header: true,
           skipEmptyLines: true,
         });
-        this.data = parsedData.data;
+        this.data = parsedData.data as DataRow[];
+        
         if (this.data.length > 0) {
-          this.headers = Object.keys(this.data[0]);
+          this.headers = this.columnsToDisplay;
+          this.data = this.data.map(row => 
+            this.columnsToDisplay.reduce((acc, key) => {
+              if (row[key] !== undefined) {
+                acc[key] = row[key];
+              }
+              return acc;
+            }, {} as DataRow)
+          );
         }
       }, (error) => {
         console.error('Error fetching data', error);
       });
   }
 
-  getKeys(obj: any): string[] {
+  getKeys(obj: DataRow): string[] {
     return obj ? Object.keys(obj) : [];
   }
-
 }
