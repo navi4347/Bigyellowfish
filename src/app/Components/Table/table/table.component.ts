@@ -47,4 +47,5 @@ export class TableComponent implements OnInit {
   getKeys(obj: any): string[] {
     return obj ? Object.keys(obj) : [];
   }
+
 }
