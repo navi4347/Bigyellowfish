@@ -34,7 +34,6 @@ describe('AuthInterceptor', () => {
     localStorage.setItem('token', 'test-token');
 
     httpClient.get('/test-endpoint').subscribe(response => {
-      // Assuming you would check the response here
     });
 
     const req = httpTestingController.expectOne('/test-endpoint');
