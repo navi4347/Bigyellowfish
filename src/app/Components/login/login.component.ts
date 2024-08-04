@@ -20,24 +20,30 @@ export class LoginComponent {
   }
 
   onSubmit() {
+    if (this.loginForm.invalid) {
+      return;
+    }
+
     const { username, password } = this.loginForm.value;
 
     this.authService.login(username, password).subscribe(
-      (response: any) => {
-        const token = response.token;
-        this.loginForm.reset();
-        sessionStorage.setItem('authToken', token);
-        this.router.navigate(['/home']).then(success => {
-          if (success) {
-            console.log('Navigation to home was successful!');
-          } else {
-            console.error('Navigation to home failed.');
-          }
-        });
+      success => {
+        if (success) {
+          this.loginForm.reset();
+          this.router.navigate(['/home']).then(success => {
+            if (success) {
+              console.log('Navigation to home was successful!');
+            } else {
+              console.error('Navigation to home failed.');
+            }
+          });
+        } else {
+          this.errorMessage = 'Login failed; please try again later.';
+        }
       },
       error => {
         this.errorMessage = error;
-        this.loginForm.reset(); 
+        this.loginForm.reset();
       }
     );
   }

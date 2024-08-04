@@ -14,10 +14,12 @@ export class AuthService {
   login(username: string, password: string): Observable<boolean> {
     return this.http.post<{ token: string }>(this.apiUrl, { username, password }).pipe(
       map(response => {
-        if (response.token) {
+        if (response && response.token) {
+          console.log('Token received:', response.token);
           this.storeAuthToken(response.token);
           return true;
         }
+        console.log('Token not received in response:', response);
         return false;
       }),
       catchError(error => {
@@ -50,6 +52,7 @@ export class AuthService {
   private storeAuthToken(token: string): void {
     if (typeof window !== 'undefined' && typeof sessionStorage !== 'undefined') {
       sessionStorage.setItem('authToken', token);
+      console.log('Token stored in sessionStorage:', token);
     }
   }
 }
