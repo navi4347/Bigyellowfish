@@ -12,13 +12,24 @@ import { AuthInterceptor } from './Interceptor/Auth/auth.interceptor';
 import { provideHttpClient, withInterceptorsFromDi, withFetch } from '@angular/common/http';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { HighchartsChartModule } from 'highcharts-angular';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatListModule } from '@angular/material/list';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
+import { PiechartComponent } from './Components/Charts/piechart/piechart.component';
+import { BarchartComponent } from './Components/Charts/barchart/barchart.component';
+import { LinechartComponent } from './Components/Charts/linechart/linechart.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     HomeComponent,
-    NotfoundComponent
+    NotfoundComponent,
+    PiechartComponent,
+    BarchartComponent,
+    LinechartComponent
   ],
   imports: [
     BrowserModule,
@@ -27,6 +38,11 @@ import { HighchartsChartModule } from 'highcharts-angular';
     FormsModule,
     ReactiveFormsModule,
     HighchartsChartModule,
+    MatToolbarModule,
+    MatSidenavModule,
+    MatListModule,
+    MatIconModule,
+    MatButtonModule
   ],
   providers: [
     provideAnimationsAsync(),

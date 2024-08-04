@@ -1,0 +1,39 @@
+mat-sidenav-container {
+  height: 100vh;
+}
+
+mat-sidenav {
+  width: auto;
+}
+
+.mat-toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: white;
+  color: black; 
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.content {
+  padding: 20px;
+}
+
+.logo{
+  height: 40px; 
+  width: 100%;  
+}
+
+.nav-item-content {
+  display: flex;
+  align-items: center;
+}
+
+.nav-item-icon {
+  margin-right: 10%;
+}
+.nav-item-text {
+  margin-bottom: 3%;
+}
+
+

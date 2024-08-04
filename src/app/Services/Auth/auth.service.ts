@@ -19,15 +19,24 @@ export class AuthService {
       })
     );
   }
+
   logout() {
-    sessionStorage.removeItem('authToken');
+    if (typeof window !== 'undefined' && typeof sessionStorage !== 'undefined') {
+      sessionStorage.removeItem('authToken');
+    }
   }
 
   isLoggedIn(): boolean {
-    return !!sessionStorage.getItem('authToken');
+    if (typeof window !== 'undefined' && typeof sessionStorage !== 'undefined') {
+      return !!sessionStorage.getItem('authToken');
+    }
+    return false;
   }
 
   getAuthToken(): string | null {
-    return sessionStorage.getItem('authToken');
+    if (typeof window !== 'undefined' && typeof sessionStorage !== 'undefined') {
+      return sessionStorage.getItem('authToken');
+    }
+    return null;
   }
 }

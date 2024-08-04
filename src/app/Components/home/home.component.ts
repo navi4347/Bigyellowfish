@@ -10,7 +10,13 @@ import { AuthService } from '../../Services/Auth/auth.service';
 export class HomeComponent implements OnInit {
 
   constructor(private router: Router, private authService: AuthService) { }
-
+  
+  navItems = [
+    { text: 'Bar Chart', icon: 'bar_chart' },
+    { text: 'Pie Chart', icon: 'pie_chart' },
+    { text: 'Line Chart', icon: 'timeline' },
+  ];
+ 
   ngOnInit() {
     if (!this.authService.isLoggedIn()) {
       this.router.navigate(['/login']);
@@ -21,4 +27,5 @@ export class HomeComponent implements OnInit {
     this.authService.logout();
     this.router.navigate(['/login']);
   }
+  
 }
