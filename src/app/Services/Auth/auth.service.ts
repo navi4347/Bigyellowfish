@@ -41,7 +41,7 @@ export class AuthService {
     }
     return false;
   }
-
+//
   getAuthToken(): string | null {
     if (typeof window !== 'undefined' && typeof sessionStorage !== 'undefined') {
       return sessionStorage.getItem('authToken');
