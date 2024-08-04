@@ -8,24 +8,28 @@ import { AuthService } from '../../Services/Auth/auth.service';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
+  selectedItem: string | null = null;
 
   constructor(private router: Router, private authService: AuthService) { }
   
   navItems = [
-    { text: 'Bar Chart', icon: 'bar_chart' },
-    { text: 'Pie Chart', icon: 'pie_chart' },
-    { text: 'Line Chart', icon: 'timeline' },
+    { text: 'Bar Chart', icon: 'bar_chart', component: 'BarChartComponent' },
+    { text: 'Pie Chart', icon: 'pie_chart', component: 'PieChartComponent' },
+    { text: 'Line Chart', icon: 'timeline', component: 'LineChartComponent' },
   ];
- 
+  
   ngOnInit() {
     if (!this.authService.isLoggedIn()) {
       this.router.navigate(['/login']);
     }
+  }
+  
+  selectItem(item: any) {
+    this.selectedItem = item.text;
   }
 
   logout() {
     this.authService.logout();
     this.router.navigate(['/login']);
   }
-  
 }
