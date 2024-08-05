@@ -22,6 +22,8 @@ import { BarchartComponent } from './Components/Charts/barchart/barchart.compone
 import { LinechartComponent } from './Components/Charts/linechart/linechart.component';
 import { TableComponent } from './Components/Table/table/table.component';
 import { HttpClientModule } from '@angular/common/http';
+import { ProfitComponent } from './Components/Charts/profit/profit.component';
+import { LossComponent } from './Components/Charts/loss/loss.component';
 
 
 @NgModule({
@@ -33,7 +35,9 @@ import { HttpClientModule } from '@angular/common/http';
     PiechartComponent,
     BarchartComponent,
     LinechartComponent,
-    TableComponent
+    TableComponent,
+    ProfitComponent,
+    LossComponent
   ],
   imports: [
     BrowserModule,
