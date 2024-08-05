@@ -135,7 +135,6 @@ export class BarchartComponent implements OnInit {
     const categories = Object.keys(data);
     const segments = new Set<string>();
 
-    // Collect all unique segments
     categories.forEach(region => {
       Object.keys(data[region]).forEach(segment => segments.add(segment));
     });
