@@ -1,1 +1,23 @@
-<p>piechart works!</p>
+<div style="width: 100%; height: 400px;">
+   
+  <div class="container">
+  <div class="row">
+<div class="col-lg">
+    <highcharts-chart 
+    [Highcharts]="Highcharts" 
+    [options]="chartOptionsQuantity" 
+    style="width: 100%; height: 100%; display: block;">
+  </highcharts-chart>
+</div>
+<div class="col-lg">
+    <div style="width: 100%; height: 400px;">
+        <highcharts-chart 
+          [Highcharts]="Highcharts" 
+          [options]="chartOptionsSales" 
+          style="width: 100%; height: 100%; display: block;">
+        </highcharts-chart>
+      </div>
+</div>
+  </div>
+</div>
+</div>

@@ -2,17 +2,15 @@
 <highcharts-chart
   [Highcharts]="Highcharts"
   [options]="regionSalesChartOptions"
-  style="width: 100%; height: 400px; display: block;">
+  style="width: 100%; height: 550px; display: block;">
 </highcharts-chart>
-
-<highcharts-chart
-  [Highcharts]="Highcharts"
-  [options]="topProfitableCitiesChartOptions"
-  style="width: 100%; height: 400px; display: block;">
-</highcharts-chart>
-
-<highcharts-chart
-  [Highcharts]="Highcharts"
-  [options]="topLossMakingCitiesChartOptions"
-  style="width: 100%; height: 400px; display: block;">
-</highcharts-chart>
+<div class="container">
+<div class="row">
+<div class="col-lg">
+<app-profit></app-profit>
+</div>
+<div class="col-lg">
+<app-loss></app-loss>
+</div>
+</div>
+</div>
